@@ -29,3 +29,52 @@ The API enables users to manage blogs using features depending on their user rol
 - ### Admin Actions:
   - Block User: `/api/admin/users/:userId/block` Admin can block users.
   - Delete Blog: `/api/admin/blogs/:id` Admin can delete any blog.
+
+## Folder Structure:
+
+e:/Web2/03_Backend/blog-project/src/
+├── app/
+│ ├── config/
+│ │ └── index.ts
+│ ├── errors/
+│ │ ├── AppError.ts
+│ │ ├── handleCastError.ts
+│ │ ├── handleDuplicateError.ts
+│ │ ├── handleValidationError.ts
+│ │ └── handleZodError.ts
+│ ├── interface/
+│ │ ├── error.ts
+│ │ └── index.d.ts
+│ ├── middlewares/
+│ │ ├── auth.ts
+│ │ ├── globalErrorhandler.ts
+│ │ ├── notFound.ts
+│ │ └── validateRequest.ts
+│ ├── modules/
+│ │ ├── auth/
+│ │ │ ├── auth.controller.ts
+│ │ │ ├── auth.interface.ts
+│ │ │ ├── auth.service.ts
+│ │ │ └── auth.validation.ts
+│ │ ├── blog/
+│ │ │ ├── blog.controller.ts
+│ │ │ ├── blog.interface.ts
+│ │ │ ├── blog.model.ts
+│ │ │ ├── blog.route.ts
+│ │ │ ├── blog.service.ts
+│ │ │ └── blog.validation.ts
+│ │ └── user/
+│ │ ├── user.constant.ts
+│ │ ├── user.controller.ts
+│ │ ├── user.interface.ts
+│ │ ├── user.model.ts
+│ │ ├── user.route.ts
+│ │ ├── user.service.ts
+│ │ └── user.validation.ts
+│ ├── routes/
+│ │ └── index.ts
+│ └── utils/
+│ ├── catchAsync.ts
+│ └── sendResponse.ts
+├── app.ts
+└── server.ts
