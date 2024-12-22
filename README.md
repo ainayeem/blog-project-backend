@@ -32,7 +32,8 @@ The API enables users to manage blogs using features depending on their user rol
 
 ## Folder Structure:
 
-e:/Web2/03_Backend/blog-project/src/
+```
+
 ├── app/
 │ ├── config/
 │ │ └── index.ts
@@ -78,3 +79,4 @@ e:/Web2/03_Backend/blog-project/src/
 │ └── sendResponse.ts
 ├── app.ts
 └── server.ts
+```
