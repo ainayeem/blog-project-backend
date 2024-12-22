@@ -11,22 +11,21 @@ const auth = (...reqquiredRoles: TAccessRole[]) => {
     const token = req.headers.authorization?.split(" ")[1];
 
     if (!token) {
-      throw new AppError(StatusCodes.UNAUTHORIZED, "you are not authorized token");
+      throw new AppError(StatusCodes.UNAUTHORIZED, "you are not authorized");
     }
 
     //chk token validation
     jwt.verify(token, config.jwt_access_secret as string, function (err, decoded) {
       if (err) {
-        throw new AppError(StatusCodes.UNAUTHORIZED, "you are not authorize token validation");
+        throw new AppError(StatusCodes.UNAUTHORIZED, "you are not authorize");
       }
 
       const role = (decoded as JwtPayload).role;
       if (reqquiredRoles && reqquiredRoles.includes(role)) {
-        throw new AppError(StatusCodes.UNAUTHORIZED, "you are not authorize role");
+        throw new AppError(StatusCodes.UNAUTHORIZED, "you are not authorize");
       }
 
       req.user = decoded as JwtPayload;
-      // console.log("🚀 ~ req.user:", req.user);
     });
     next();
   });

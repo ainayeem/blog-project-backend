@@ -13,9 +13,14 @@ export type TAuthorBlog = {
   author: string;
 };
 
-export interface TBlogQueryParams {
+export type TBlogQueryParams = {
   search?: string;
   sortBy?: string;
   sortOrder?: "asc" | "desc";
   filter?: string;
-}
+};
+
+export type TBlogUpdate = {
+  title?: string;
+  content?: string;
+};

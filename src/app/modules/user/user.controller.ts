@@ -1,4 +1,5 @@
 import { StatusCodes } from "http-status-codes";
+import AppError from "../../errors/AppError";
 import catchAsync from "../../utils/catchAsync";
 import sendResponse from "../../utils/sendResponse";
 import { UserServices } from "./user.service";
@@ -15,6 +16,24 @@ const createUser = catchAsync(async (req, res) => {
   });
 });
 
+const blockUser = catchAsync(async (req, res) => {
+  const user = req.user;
+  const userId = req.params.userId;
+
+  if (user?.role !== "admin") throw new AppError(StatusCodes.UNAUTHORIZED, "You are not authorized");
+
+  const payload = { isBlocked: true };
+  await UserServices.updateUserIntoDB(userId, payload);
+
+  sendResponse(res, {
+    success: true,
+    message: "User blocked successfully",
+    statusCode: StatusCodes.OK,
+    data: undefined,
+  });
+});
+
 export const UserControllers = {
   createUser,
+  blockUser,
 };

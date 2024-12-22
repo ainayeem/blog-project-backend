@@ -12,6 +12,14 @@ interface TMongoUser extends TUser {
   _id: ObjectId | string;
 }
 
+export interface TUserPartial {
+  name?: string;
+  email?: string;
+  password?: string;
+  role?: "admin" | "user";
+  isBlocked?: boolean;
+}
+
 export interface UserModel extends Model<TUser> {
   //instance methods for checking if the user exist
   isUserExistsByEmail(email: string): Promise<TMongoUser>;

@@ -22,7 +22,6 @@ const loginUser = async (payload: TLoginUser) => {
 
   // crt jwt
   const jwtPayload = {
-    // userId: user,
     userId: user._id,
     role: user.role,
   };
